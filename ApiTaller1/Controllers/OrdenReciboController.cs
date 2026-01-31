@@ -47,6 +47,12 @@ namespace ApiTaller1.Controllers
             return Ok(_ior.ConsultaProductosRevisadosSP);
         }
 
+        [HttpGet("ORProductosRevisadosSP/{NumRecibo}")]
+        public IActionResult ConsultaProductosRevisadosSPv2(string NumRecibo)
+        {
+            return Ok(_ior.ConsultaProductosRevisadosSPv2(NumRecibo));
+        }
+
         // POST api/<OrdenReciboController>
         [HttpPost]
         public void Post([FromBody] string value)

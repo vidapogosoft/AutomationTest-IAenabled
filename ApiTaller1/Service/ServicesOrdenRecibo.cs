@@ -38,5 +38,10 @@ namespace ApiTaller1.Service
         {
             get { return data.ConsultaProductosRevisadosSP(); }
         }
+
+        public IEnumerable<ormdb.Models.DTO.DtoORProductosRevisados> ConsultaProductosRevisadosSPv2(string NumRecibo)
+        {
+            return data.ConsultaProductosRevisadosSPv2(NumRecibo);
+        }
     }
 }

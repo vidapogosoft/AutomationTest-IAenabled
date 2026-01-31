@@ -116,6 +116,14 @@ namespace ApiTaller1.DA
             }
         }
 
+        public List<ormdb.Models.DTO.DtoORProductosRevisados> ConsultaProductosRevisadosSPv2(string NumRecibo)
+        {
+            using (var ctx = new OrdenreciboContext())
+            {
+                return ctx.Resultado.FromSqlRaw("ConsultaProductosRevisadosv2 {0}", NumRecibo).ToList();
+            }
+        }
+
 
     }
 }

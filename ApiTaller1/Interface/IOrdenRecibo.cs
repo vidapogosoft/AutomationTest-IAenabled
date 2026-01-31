@@ -17,6 +17,7 @@ namespace ApiTaller1.Interface
         IEnumerable<DtoORProductosRevisados> ConsultaProductosRevisadosv2(string ordenrecibo, int idorden);
 
         IEnumerable<ormdb.Models.DTO.DtoORProductosRevisados> ConsultaProductosRevisadosSP { get; }
+        IEnumerable<ormdb.Models.DTO.DtoORProductosRevisados> ConsultaProductosRevisadosSPv2(string NumRecibo);
 
     }
 }
