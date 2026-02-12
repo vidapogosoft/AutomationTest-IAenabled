@@ -57,6 +57,7 @@ namespace ApiTaller1.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
+
         }
 
         // PUT api/<OrdenReciboController>/5
