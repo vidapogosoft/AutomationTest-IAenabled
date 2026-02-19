@@ -10,7 +10,7 @@ namespace seleniumtest1
     public class Class1
     {
         //inicializo el driver
-        public IWebDriver driver = new ChromeDriver(@"D:\vidapogosoft\cursos\2025\");
+        public IWebDriver driver = new ChromeDriver(@"D:\vidapogosoft\cursos\2026\");
 
         //instancia publica de la pagina web a testear
         public string url = "https://cpanel-safety.com/openfact/Account/Login.aspx";

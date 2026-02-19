@@ -12,7 +12,8 @@ namespace seleniumtest1
     public class Ejemplo2
     {
         //inicializo el driver
-        public IWebDriver driver = new EdgeDriver(@"D:\vidapogosoft\cursos\2025\edge\");
+        //public IWebDriver driver = new EdgeDriver(@"D:\vidapogosoft\cursos\2025\edge\");
+        public IWebDriver driver = new ChromeDriver(@"D:\vidapogosoft\cursos\2026\");
 
         //instancia publica de la pagina web a testear
         public string url = "http://tizag.com/phpT/examples/formex.php";
