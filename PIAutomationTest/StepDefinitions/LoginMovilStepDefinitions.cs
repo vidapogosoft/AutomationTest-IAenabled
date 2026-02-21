@@ -30,7 +30,7 @@ namespace PIAutomationTest.StepDefinitions
            
             AppiumOptions cap = new AppiumOptions();
 
-            cap.AddAdditionalCapability("app", "D:\\vidapogosoft\\cursos\\2023\\SIPECOM\\TestAutomatizadosFCME\\herramientas\\CrudContact\\app-release.apk");
+            cap.AddAdditionalCapability("app", "D:\\vidapogosoft\\cursos\\2026\\CrudContact\\app-release.apk");
             cap.AddAdditionalCapability("device", "SM-T295");
             cap.AddAdditionalCapability("deviceName", "Tab VPR");
             cap.AddAdditionalCapability("platformName", "Android");

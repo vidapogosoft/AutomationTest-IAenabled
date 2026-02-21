@@ -17,7 +17,7 @@ namespace NetWinAppDriver1
         {
 
             var options = new AppiumOptions();
-            options.AddAdditionalCapability("app", "D:\\vidapogosoft\\cursos\\2023\\SIPECOM\\TestAutomatizadosFCME\\herramientas\\AppWinForm1.exe");
+            options.AddAdditionalCapability("app", "D:\\vidapogosoft\\cursos\\2026\\AppWinForm1.exe");
             options.AddAdditionalCapability("deviceName", "PORTUGALASUS");
 
             _driver = new WindowsDriver<WindowsElement>(new Uri("http://127.0.0.1:4723"), options);
