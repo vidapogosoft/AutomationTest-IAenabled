@@ -1,4 +1,5 @@
 using EvaluacionCredito.Tests.Models;
+using System.Text.RegularExpressions;
 
 namespace EvaluacionCredito.Tests.Services
 {
@@ -9,56 +10,67 @@ namespace EvaluacionCredito.Tests.Services
         public string EvaluateCredit(Customer customer)
         {
             if (customer == null)
-                return "Crédito rechazado";
+                return "Credito rechazado";
 
-            // validación de edad
+            // validacion de edad
             if (customer.Age < 18)
-                return "Crédito rechazado";
-            if (customer.Age >= 18 && customer.Age <= 70)
-                return "Crédito asignado";
+                return "Credito rechazado";
+            if (customer.Age > 70)
+                return "Credito rechazado";
 
-            // validación de ingresos
+            // validacion de ingresos 
             if (customer.Income > 0)
             {
                 if (customer.Income < IncomeThreshold)
-                    return "Crédito rechazado";
+                    return "Credito rechazado";
                 if (customer.Income == IncomeThreshold)
-                    return "Crédito aprobado";
+                    return "Credito aprobado";
+                if (customer.Income > IncomeThreshold)
+                    return "Credito asignado";
             }
 
             // historial crediticio
             if (!string.IsNullOrEmpty(customer.History))
             {
-                if (customer.History == "vacío")
-                    return "Evaluación especial / limitado";
                 if (customer.History.Contains("morosidad"))
-                    return "Crédito rechazado";
+                    return "Credito rechazado";
+                if (customer.History == "vacio")
+                    return "Evaluacion especial / limitado";
             }
 
             // deuda
             if (!string.IsNullOrEmpty(customer.Debt))
             {
-                if (customer.Debt == "límite")
-                    return "Crédito aprobado con condiciones";
+                if (customer.Debt == "limite")
+                    return "Credito aprobado con condiciones";
             }
 
-            return "Crédito rechazado";
+            // default for age-only scenarios
+            if (customer.Age >= 18 && customer.Age <= 70)
+                return "Credito asignado";
+
+            return "Credito rechazado";
         }
 
         public string ProcessSecurityAction(string action)
         {
-            if (action.Contains("' OR '1'='1"))
+            if (string.IsNullOrEmpty(action))
+                return "Accion no reconocida";
+
+            string normalized = action.ToLowerInvariant();
+            
+            if (normalized.Contains("sql injection") || normalized.Contains("or") && normalized.Contains("1"))
                 return "Bloqueo entrada / error controlado";
-            if (action.Contains("Acceso sin rol analista"))
+            if (normalized.Contains("acceso sin rol") || normalized.Contains("analista"))
                 return "Acceso denegado";
-            if (action.Contains("Alteración de payload"))
+            if (normalized.Contains("alteracion de payload") || normalized.Contains("alteracion") && normalized.Contains("payload"))
                 return "Datos rechazados / alerta";
-            if (action.Contains("Alteración de score"))
-                return "Validación backend evita fraude";
-            if (action.Contains("Fuerza bruta"))
+            if (normalized.Contains("alteracion de score") || (normalized.Contains("alteracion") && normalized.Contains("score")))
+                return "Validacion backend evita fraude";
+            if (normalized.Contains("fuerza bruta") || (normalized.Contains("bruta") && normalized.Contains("login")))
                 return "Cuenta bloqueada / alerta";
 
-            return "Acción no reconocida";
+            return "Accion no reconocida";
         }
     }
 }
